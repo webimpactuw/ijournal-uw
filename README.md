@@ -47,7 +47,6 @@ File Directory:
 ├── app/
 │   ├── about/
 │   │   └── page.js        # About page contents
-│   │ 
 │   │
 │   ├── work/              # Work page contents
 │   │   └── page.js
