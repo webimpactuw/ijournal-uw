@@ -48,7 +48,10 @@ File Directory:
 │   ├── about/
 │   │   └── page.js        # About page contents
 │   │
-│   ├── work/              # Work page contents
+│   ├── articles/          # Articles page contents
+│   │   └── page.js
+|   |
+│   ├── journals/          # Journals page contents
 │   │   └── page.js
 │   │
 │   ├── Components/        

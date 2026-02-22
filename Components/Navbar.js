@@ -1,36 +1,140 @@
+"use client"
 import Link from "next/link";
+import { motion } from "motion/react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  //Makes sure the navbar dropdown is closed when a new page loads
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  //Makes sure the navbar closes when the screen gets too big
+  useEffect(() => {
+    const screenWatcher = window.matchMedia("(min-width: 768px)");
+
+    const handleResize = (e) => {
+      if (e.matches) {
+        setOpen(false);
+      }
+    };
+
+    screenWatcher.addEventListener("change", handleResize);
+
+    return () => {
+      screenWatcher.removeEventListener("change", handleResize);
+    };
+  })
+
   return (
-    <nav className="w-full border-b border-gray-200 bg-white">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <nav className="w-full sticky top-0 bg-navBar z-10">
+      <motion.div className="mx-auto flex max-w-7xl items-center justify-between p-5">
         {/* Logo / Brand */}
-        <Link href="/" className="text-xl font-semibold tracking-tight text-black">
-          iJournal
-        </Link>
+
+        <a href="/" className={`text-xl font-semibold tracking-tight text-black `}>
+          <motion.img 
+            className={`duration-400 ${open ? "rotate-10 w-10 h-10" : "w-6 h-6"}`}
+            src={"/"}
+            alt="IJournal"
+            whileHover={{rotate: 10, scale: 1.3}}
+          />
+          </a>
 
         {/* Nav links */}
-        <div className="flex gap-8 text-sm font-medium text-gray-500">
+        <div className="hidden md:flex gap-12 text-xl font-medium text-white pr-10">
           <Link
             href="/"
-            className="transition-colors hover:text-black"
+            className="transition-colors hover:text-pink-400"
           >
             Home
           </Link>
           <Link
-            href="/work"
-            className="transition-colors hover:text-black"
+            href="/articles"
+            className="transition-colors hover:text-pink-400"
           >
-            Work
+            Article
+          </Link>
+          <Link
+            href="/journals"
+            className="transition-colors hover:text-pink-400"
+          >
+            Journals
           </Link>
           <Link
             href="/about"
-            className="transition-colors hover:text-black"
+            className="transition-colors hover:text-pink-400"
           >
             About
           </Link>
         </div>
+        
+        {/*Hamburger button for small screens*/}
+        <motion.button 
+          onClick={() => setOpen(!open)}
+          className="md:hidden flex flex-col space-y-1 justify-end cursor-pointer"
+        >
+          <motion.div
+            animate={open ? {rotate: 45, translateY: 8} : {}}
+            className="w-6 h-0.5 bg-white"
+          />
+          <motion.div
+            animate={open ? {opacity: 0} : {}}
+            transition={{duration: 0.1}}
+            className="w-6 h-0.5 bg-white"
+          />
+          <motion.div
+            animate={open ? {rotate: -45, translateY: -4} : {}}
+            className="w-6 h-0.5 bg-white"
+          />
+        </motion.button>
+      </motion.div>
+
+      {/*Dropdown menu for the hamburger icon*/}
+      <div 
+        className={`md:hidden overflow-hidden absolute w-full bg-navBar text-2xl text-white px-4 shadow-2xl duration-400
+          ${open ? "max-h-96" : "max-h-0"}`}
+      >
+        <div className="max-w-7xl mx-auto py-4 border-b-2 border-dropDownBorder">
+          <a 
+            className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
+            href="/"  
+          >
+            Home
+          </a>
+        </div>
+          
+        <div className="max-w-7xl mx-auto py-4 border-b-2 border-dropDownBorder">
+          <a 
+            className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
+            href="/articles"  
+          >
+            Articles
+          </a>
+        </div>
+         
+        <div className="max-w-7xl mx-auto py-4 border-b-2 border-dropDownBorder">
+          <a 
+            className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
+            href="/journals"  
+          >
+            Journals
+          </a>
+        </div>
+
+        <div className="max-w-7xl mx-auto py-4">
+          <a 
+            className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
+            href="/about"  
+          >
+            About
+          </a>
+        </div>
       </div>
+      
     </nav>
   );
 }
