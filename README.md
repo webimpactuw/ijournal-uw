@@ -41,24 +41,21 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-File Directory:
+### File Structure
 
-[website]/                 # Website root
+```
+[website]/
 ├── app/
 │   ├── about/
-│   │   └── page.js        # About page contents
-│   │
-│   ├── articles/          # Articles page contents
+│   │   └── page.js           # About page contents
+│   ├── articles/             # Articles page contents
 │   │   └── page.js
-|   |
-│   ├── journals/          # Journals page contents
+│   ├── journals/             # Journals page contents
 │   │   └── page.js
-│   │
-│   ├── Components/        
-│   │   └── NavBar.js      # Global navbar component
-│   │
-│   ├── global.css         # Global CSS file
-│   ├── layout.js          # Global Page layout stylings
-│   └── page.js            # Website homepage
-│   
-└── public/                # Public, user-facing files (PNGs, SVGs)
+│   ├── Components/           
+│   │   └── NavBar.js         # Global navbar component
+│   ├── global.css            # Global CSS file
+│   ├── layout.js             # Global Page layout stylings
+│   └── page.js               # Website homepage
+└── public/                   # Public, user-facing files (PNGs, SVGs)
+```
