@@ -8,7 +8,7 @@
 }
 
 @font-face {
-  font-family: 'Batmip';
+  font-family: 'Batmip-Italic';
   src: url('/fonts/BATMIP1.41-Italic.otf') format('opentype');
   font-style: italic;
 }
@@ -44,7 +44,7 @@
 }
 
 @theme {
-  --font-batmip: 'Batmip', sans-serif;
+  --font-batmip: 'Batmip-Book', sans-serif;
   --font-dm-mono: "DM Mono", monospace;
   --font-garamond: "EB Garamond", serif;
 }
@@ -53,14 +53,18 @@
   --background: #ffffff;
   --foreground: #171717;
   --navBar: #660D64;
+  --footer: #660D64;
   --dropDownBorder: #8A2974;
   --text: #a45d92;
+  --footerText: #F0DDD0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-navBar: var(--navBar);
+  --color-footer: var(--footer);
+  --color-footerText: var(--footerText);
   --color-main: var(--text);
   --color-dropDownBorder: var(--dropDownBorder);
   --font-sans: var(--font-geist-sans);
