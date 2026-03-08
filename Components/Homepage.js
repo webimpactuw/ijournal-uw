@@ -17,14 +17,17 @@ export default function Homepage() {
             </div>
 
             <div className="absolute top-120 left-160 max-w-1/4">
-                <p className="">I saw my life branching out<br/>
+                <p>
+                    I saw my life branching out<br/>
                     before me like the green<br/>
-                    fig tree in the story.</p>
+                    fig tree in the story.
+                </p>
                 <div className="relative top-5 left-30 text-right">
-                    <p>From the tip of every <br/>
+                    <p>
+                        From the tip of every <br/>
                         branch, like a fat purple fig, <br/>
-                        a wonderful future beckoned.</p>
-                    
+                        a wonderful future beckoned.
+                    </p>
                     <p>SYLVIA PLATH, THE BELL JAR</p>
                 </div>
             </div>
