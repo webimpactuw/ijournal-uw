@@ -3,12 +3,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import localFont from "next/font/local";
 
-  //Fonts
-  const batmipItalic = localFont({
-    src: "../assets/Fonts/BATMIP1.41-Italic.otf",
-  });
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -101,7 +96,7 @@ export default function Navbar() {
 
       {/*Dropdown menu for the hamburger icon*/}
       <div 
-        className={`${batmipItalic.className} md:hidden overflow-hidden absolute w-full bg-navBar text-5xl text-white px-4 shadow-2xl duration-400 font-
+        className={`md:hidden overflow-hidden absolute w-full bg-navBar text-5xl text-white font-batmip px-4 shadow-2xl duration-400 font-
           ${open ? "max-h-96" : "max-h-0"}`}
       >
         <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
