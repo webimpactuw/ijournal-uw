@@ -8,7 +8,7 @@ import Logo from '../assets/Logo/iJournal_Logo.svg';
 
 export default function Homepage() {
     return(
-        <div className="w-full relative min-h-screen flex justify-start items-start overflow-hidden font-medium">
+        <div className="w-full relative min-h-screen flex justify-start items-start overflow-hidden font-medium font-garamond text-[16pt]">
             <Image className="absolute z-[-1] object-cover" fill src={Illustration} alt="iJournal landing page background"/>
             
             <div className="absolute w-7/24 top-[30%] left-[70%] px-6 py-8">
@@ -28,7 +28,7 @@ export default function Homepage() {
                         branch, like a fat purple fig, <br/>
                         a wonderful future beckoned.
                     </p>
-                    <p className="font-dm-mono" >SYLVIA PLATH, THE BELL JAR</p>
+                    <p className="font-dm-mono not-italic font-normal text-[12pt]" >SYLVIA PLATH, THE BELL JAR</p>
                 </div>
             </div>
         </div>
