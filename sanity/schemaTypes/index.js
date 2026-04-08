@@ -1,3 +1,3 @@
-export const schema = {
-  types: [],
-}
+import article from "./article";
+
+export const schemaTypes = [article];
