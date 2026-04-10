@@ -9,8 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@portabletext/react": "^6.0.3",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.18.0",
+    "date-fns": "^4.1.0",
     "framer-motion": "^12.33.0",
     "motion": "^12.31.0",
     "next": "^16.2.1",
@@ -18,10 +20,12 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "sanity": "^5.18.0",
+    "sanity-plugin-media": "^4.1.1",
     "styled-components": "^6.3.12"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@tailwindcss/typography": "^0.5.19",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "tailwindcss": "^4"
