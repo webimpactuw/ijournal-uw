@@ -100,6 +100,7 @@ export default function Navbar() {
           className={`md:hidden overflow-hidden absolute w-full bg-navBar text-5xl text-white font-batmip px-4 shadow-2xl duration-400 font-
             ${open ? "max-h-96" : "max-h-0"}`}
         >
+          <i>
           <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
             <a 
               className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
@@ -135,6 +136,7 @@ export default function Navbar() {
               About
             </a>
           </div>
+          </i>
         </div>
         
       </nav>
