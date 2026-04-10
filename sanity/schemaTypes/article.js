@@ -7,9 +7,28 @@ export default defineType({
 
   fields: [
     defineField({
+      name: "category",
+      title: "Category",
+      type: "string",
+    }),
+
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
+    }),
+
+    defineField({
+      name: "subtitle",
+      title: "Subtitle",
+      type: "string",
+    }),
+
+    defineField({
+        name: "featuredArticle",
+        title: "Featured Article",
+        type: "boolean",
+        initialValue: false,
     }),
 
     defineField({
@@ -19,7 +38,7 @@ export default defineType({
     }),
 
     defineField({
-      name: "date",
+      name: "publishDate",
       title: "Publish Date",
       type: "date",
     }),
@@ -46,13 +65,36 @@ export default defineType({
     defineField({
       name: "content",
       title: "Content",
-      type: "text",
+      type: "array",
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [
+            {
+              name: "alt",
+              title: "Alt text",
+              type: "string",
+            },
+            {
+              name: "caption",
+              title: "Caption",
+              type: "string",
+            },
+          ],
+        },
+      ],
     }),
-
     defineField({
-      name: "featured",
-      title: "Featured Article",
-      type: "boolean",
-    }),
+      name: "credits",
+      title: "Credits",
+      type: "array",
+      of: [
+        {
+          type: "block",
+        }
+      ],
+    })
   ],
 });
