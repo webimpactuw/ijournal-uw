@@ -1,10 +1,15 @@
-"use client"; 
-import localFont from "next/font/local";
+ import localFont from "next/font/local";
 import NextImage from "next/image";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 import { motion } from "motion/react";
 
 const batmipItalic = localFont({
   src: "../../assets/Fonts/BATMIP1.41-Italic.otf",
+});
+
+const batmipRegular = localFont({
+  src: "../../assets/Fonts/BATMIP1.41-Book.otf",
 });
 
 const ebGaramondBasic = localFont({
@@ -19,7 +24,24 @@ const dmMonoBasic = localFont({
   src: "../../assets/Fonts/DMMono-Regular.ttf",
 });
 
-export default function About() {
+async function getTeamMembers() {
+  return client.fetch(`
+    *[_type == "teamMember"] | order(order asc) {
+      _id, name, role, team, photo
+    }
+  `)
+}
+
+const teams = [
+  { key: "executiveBoard", label: "Executive Board" },
+  { key: "designTeam", label: "Design Team" },
+  { key: "reportingTeam", label: "Reporting Team" },
+  { key: "editingTeam", label: "Editing Team" },
+  { key: "communicationsTeam", label: "Communications Team" }
+]
+
+export default async function About() {
+  const members = await getTeamMembers()
   return (
     <section className="w-full bg-white py-16">
       <div className="mx-auto w-[min(92vw,1300px)]">
@@ -29,14 +51,14 @@ export default function About() {
         </h2>
         <div className="mt-3 mb-8 h-px w-full bg-[#d9ccd8]" />
 
-        <motion.p className={`${ebGaramondBasic.className} text-[#660c64] text-[34px] font-medium leading-snug mb-16 max-w-6.5xl`}>
+        <p className={`${ebGaramondBasic.className} text-[#660c64] text-[34px] font-medium leading-snug mb-16 max-w-6.5xl`}>
           iJournal is the University of Washington Information School's{" "}
           <em className={ebGaramondItalic.className}>student-driven publication</em> dedicated to encouraging{" "}
           <em className={ebGaramondItalic.className}>critical dialogue, innovative ideas, and diverse perspectives.</em>
-        </motion.p>
+        </p>
 
         <div className="flex gap-16 items-start">
-          <motion.div className={`${ebGaramondBasic.className} flex-1 max-w-[710px] mt-22 space-y-4 text-black text-[22px] leading-snug`}>
+          <div className={`${ebGaramondBasic.className} flex-1 max-w-[710px] mt-22 space-y-4 text-black text-[22px] leading-snug`}>
             <p>
               We provide a platform for students to share thought pieces, research, opinions, and creative works that explore ideas at 
               the intersection of technology, information, and society. Our mission is to amplify student voices, inspire collaboration, 
@@ -49,15 +71,53 @@ export default function About() {
               published as possible. If you are interested in getting involved, check out our Instagram page for open positions during the fall 
               quarter!
             </p>
-          </motion.div>
-          <motion.div className="flex flex-col items-center gap-3 shrink-0 ml-8">
+          </div>
+          <div className="flex flex-col items-center gap-3 shrink-0 ml-8">
             <NextImage src="/executive_board.jpg" alt="2024-2025 iJournal Executive Board" width={460} height={520} className="rounded object-cover" />
             <p className={`${dmMonoBasic.className} text-[16px] text-black`}>
               2024-2025 iJournal Executive Board
             </p>
-          </motion.div>
-
+          </div>
         </div>
+        <h2 className={`${batmipItalic.className} text-[45px] leading-none tracking-[-0.02em] text-[#660c64]`}>
+          2024-2025 Staff
+        </h2>
+        <div className="mt-3 mb-8 h-px w-full bg-[#d9ccd8]" />
+
+        {teams.map(({ key, label }) => {
+          const teamMembers = members.filter(m => m.team === key);
+          if (teamMembers.length === 0) return null;
+          return (
+            <div key={key} className="mb-12">
+              <h3 className={`${batmipRegular.className} text-[34px] text-pink-400 mb-8`}>
+                {label}
+              </h3>
+              <div className="grid grid-cols-2 gap-x-18 gap-y-14 md:grid-cols-3">
+                {teamMembers.map((member) => (
+                  <div key={member._id} className="max-w-[280px]">
+                    {member.photo?.asset ? (
+                      <NextImage
+                        src={urlFor(member.photo).auto('format').url()}
+                        alt={member.name}
+                        width={160}
+                        height={160}
+                        className="w-full aspect-square object-cover"
+                      />
+                    ) : (
+                      <div className="w-full aspect-square bg-[#e8d5d8]" />
+                    )}
+                    <p className={`${dmMonoBasic.className} mt-3 text-[17px] text-[#1f1f1f]`}>
+                      {member.role}
+                    </p>
+                    <p className={`${dmMonoBasic.className} text-[20px] text-pink-400`}>
+                      {member.name}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        })}
       </div>
     </section>
   );
