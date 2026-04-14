@@ -24,6 +24,10 @@ const dmMonoBasic = localFont({
   src: "../../assets/Fonts/DMMono-Regular.ttf",
 });
 
+const dmMonoMedium = localFont({
+  src: "../../assets/Fonts/DMMono-Medium.ttf",
+});
+
 async function getTeamMembers() {
   return client.fetch(`
     *[_type == "teamMember"] | order(order asc) {
@@ -89,7 +93,7 @@ export default async function About() {
           if (teamMembers.length === 0) return null;
           return (
             <div key={key} className="mb-12">
-              <h3 className={`${batmipRegular.className} text-[34px] text-pink-400 mb-8`}>
+              <h3 className={`${batmipRegular.className} text-[34px] text-[#a45d92] mb-8`}>
                 {label}
               </h3>
               <div className="grid grid-cols-2 gap-x-18 gap-y-14 md:grid-cols-3">
@@ -106,10 +110,10 @@ export default async function About() {
                     ) : (
                       <div className="w-full aspect-square bg-[#e8d5d8]" />
                     )}
-                    <p className={`${dmMonoBasic.className} mt-3 text-[17px] text-[#1f1f1f]`}>
+                    <p className={`${dmMonoMedium.className} mt-3 text-[17px] text-[#1f1f1f]`}>
                       {member.role}
                     </p>
-                    <p className={`${dmMonoBasic.className} text-[20px] text-pink-400`}>
+                    <p className={`${dmMonoMedium.className} text-[20px] text-[#ac3990]`}>
                       {member.name}
                     </p>
                   </div>
