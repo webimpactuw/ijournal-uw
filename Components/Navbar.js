@@ -37,14 +37,14 @@ export default function Navbar() {
         <motion.div className="mx-auto flex max-w-7xl items-center justify-between p-3">
           {/* Logo / Brand */}
 
-          <a href="/" className={`text-xl font-semibold tracking-tight text-black ml-2`}>
+          <Link href="/" className={`text-xl font-semibold tracking-tight text-black ml-2`}>
             <motion.img 
               className={`duration-400 ${open ? "rotate-10 w-10 h-10" : "w-10 h-10"}`}
               src={"/logos/iJournal_Cursor.svg"}
               alt="IJournal Open logo"
               whileHover={{rotate: 10, scale: 1.3}}
             />
-            </a>
+            </Link>
 
           {/* Nav links */}
           <div className="hidden md:flex gap-12 text-lg font-medium text-white pr-10 font-mono">
@@ -102,39 +102,39 @@ export default function Navbar() {
         >
           <i>
           <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
-            <a 
+            <Link 
               className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
               href="/"  
             >
               Home
-            </a>
+            </Link>
           </div>
             
           <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
-            <a 
+            <Link 
               className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
               href="/articles"  
             >
               Articles
-            </a>
+            </Link>
           </div>
           
           <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
-            <a 
+            <Link 
               className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
               href="/journals"  
             >
               Journals
-            </a>
+            </Link>
           </div>
 
           <div className="max-w-7xl mx-auto py-6">
-            <a 
+            <Link 
               className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
               href="/about"  
             >
               About
-            </a>
+            </Link>
           </div>
           </i>
         </div>
