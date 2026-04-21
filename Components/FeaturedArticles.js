@@ -21,7 +21,7 @@ const DMMonoRegular = localFont({
 
 export default function FeaturedArticles({ articles }) {
   return (
-    <section className="w-full bg-[#fffcfd] py-16">
+    <section className="w-full bg-[#fffcfd] py-16 logo-cursor">
       <div className="mx-auto w-[min(92vw,1300px)]">
         <h2
           className={`${batmipItalic.className} text-[45px] leading-none tracking-[-0.02em] text-[#660c64]`}

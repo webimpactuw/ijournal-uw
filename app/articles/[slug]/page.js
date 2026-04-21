@@ -132,7 +132,7 @@ export default async function Page({ params }) {
 
   return (
     <main className="w-full">
-        <section className="bg-[#e8d5d8]">
+        <section className="bg-[#e8d5d8] logo-cursor">
             <div className="mx-auto grid min-h-190 w-[min(92vw,1200px)] grid-cols-1 items-center gap-16 py-60 md:grid-cols-2">
                 <div className="max-w-170">
 
