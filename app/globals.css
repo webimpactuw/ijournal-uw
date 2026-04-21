@@ -85,3 +85,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.logo-cursor {
+  cursor: url('/logos/iJournal_Cursor.svg') 16 16, auto;
+}
+
+.logo-cursor * {
+  cursor: inherit;
+}
+
+.logo-cursor:active, .logo-cursor *:active {
+  cursor: url('/logos/iJournal_CursorVariant.svg') 16 16, auto;
+}
