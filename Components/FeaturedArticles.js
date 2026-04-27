@@ -36,7 +36,7 @@ export default function FeaturedArticles({ articles }) {
             <Link
               key={article._id}
               href={`/articles/${article.slug}`}
-              className="grid grid-cols-[180px_1fr] items-center gap-8 border-b border-[#e4d7e3] py-10"
+              className="group grid grid-cols-1 gap-6 border-b border-[#e4d7e3] py-10 md:grid-cols-[220px_1fr] md:items-center md:gap-8"
             >
               {article.image?.asset ? (
                 <Image
@@ -51,13 +51,13 @@ export default function FeaturedArticles({ articles }) {
               )}
               
               <div className ="group transition-colors duration-350">
-                <h3 className={`${EBGaramondVariable.className} text-[40px] leading-tight tracking-[-0.02em] text-[#660c64] group-hover:text-[#f77ca6] transition-colors`}>
+                <h3 className={`${EBGaramondVariable.className} text-[30px] leading-tight tracking-[-0.02em] text-[#660c64] group-hover:text-[#f77ca6] transition-colors md:text-[40px]`}>
                   {article.subtitle ? `${article.title}: ${article.subtitle}` : article.title}
                 </h3>
-                <p className={`${DMMonoRegular.className} text-[17px] leading-none tracking-[-0.02em] text-[#b78ab3] mb-4 mt-4 group-hover:text-[#fabdd3] transition-colors`}>
+                <p className={`${DMMonoRegular.className} text-[16px] leading-none tracking-[-0.02em] text-[#b78ab3] mb-4 mt-4 group-hover:text-[#fabdd3] transition-colors`}>
                   {article.author}
                 </p>
-                <p className={`${DMMonoRegular.className} text-[17px] leading-none tracking-[-0.02em] text-[#b78ab3] group-hover:text-[#fabdd3] transition-colors`}>
+                <p className={`${DMMonoRegular.className} text-[16px] leading-none tracking-[-0.02em] text-[#b78ab3] group-hover:text-[#fabdd3] transition-colors`}>
                   {new Date(article.publishDate + "T12:00:00Z").toLocaleDateString("en-US", {
                     month: "long",
                     day: "numeric",
