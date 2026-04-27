@@ -20,6 +20,7 @@ export async function getAllArticles() {
   const query = `*[_type == "article"] | order(publishDate desc){
     _id,
     title,
+    subtitle,
     author,
     publishDate,
     "slug": slug.current,
@@ -64,7 +65,7 @@ export default async function Articles() {
               )}
 
               <div className ="group transition-colors duration-350">
-                <h3 className={`${EBGaramondVariable.className} text-[40px] leading-tight tracking-[-0.02em] text-[#660c64] group-hover:text-[#f77ca6] transition-colors`}>
+                <h3 className={`${EBGaramondVariable.className} text-[30px] leading-tight tracking-[-0.02em] text-[#660c64] group-hover:text-[#f77ca6] transition-colors md:text-[40px]`}>
                   {article.subtitle ? `${article.title}: ${article.subtitle}` : article.title}
                 </h3>
                 <p className={`${DMMonoRegular.className} text-[16px] leading-none tracking-[-0.02em] text-[#b78ab3] mb-4 mt-4 group-hover:text-[#fabdd3] transition-colors`}>
