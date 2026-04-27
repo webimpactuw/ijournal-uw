@@ -36,7 +36,7 @@ export default function FeaturedArticles({ articles }) {
             <Link
               key={article._id}
               href={`/articles/${article.slug}`}
-              className="grid grid-cols-[180px_1fr] items-center gap-8 border-b border-[#e4d7e3] py-10"
+              className="group grid grid-cols-1 gap-6 border-b border-[#e4d7e3] py-10 md:grid-cols-[220px_1fr] md:items-center md:gap-8"
             >
               {article.image?.asset ? (
                 <Image
