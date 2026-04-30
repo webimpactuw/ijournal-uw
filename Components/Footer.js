@@ -10,7 +10,7 @@ export default function Footer() {
                     <img src="../logos/iJournal_Cursor.svg" alt="footer image"/>
                 </div>
                 
-                {/* Mobile */}
+                {/* Mobile Query*/}
                 <motion.p style={{ fontFamily: 'Batmip-Book', fontStyle: 'normal', fontSize: '6.5vw', lineHeight: '1.3', marginLeft: '0.2rem' }} className="block md:hidden font-medium text-footerText text-left">
                     <Link href="/" className="italic underline transition-colors hover:text-pink-400">iJournal</Link>{" "}
                     is the UW iSchool's{" "}

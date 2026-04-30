@@ -1,3 +1,5 @@
-import article from "./article";
+export const schema = {
+  types: [],
+}
 
 export const schemaTypes = [article];
