@@ -62,7 +62,7 @@ export default async function About() {
 
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
           <div className="flex flex-col items-center gap-3 shrink-0 md:order-2 md:ml-8 w-full md:w-auto mx-auto">
-            <NextImage src="/executive_board.jpg" alt="2024-2025 iJournal Executive Board" loading="eager" priority width={460} height={520} className="rounded object-cover w-full md:w-[460px] mx-auto h-auto" />
+            <NextImage src="/executive_board.jpg" alt="2024-2025 iJournal Executive Board" loading="eager" priority width={460} height={460} className="rounded object-cover w-full md:w-[460px] mx-auto h-auto" />
             <p className={`${dmMonoBasic.className} text-[16px] text-black text-center`}>
               2024-2025 iJournal Executive Board
             </p>
