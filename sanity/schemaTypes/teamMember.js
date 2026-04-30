@@ -8,7 +8,7 @@ export const teamMember = {
         { name: "team", title: "Team", type: "string",
             options: {
                 list: [
-                    { title: "Executive Board", value: "executiveBoard" },
+                    { title: "Executive Team", value: "executiveTeam" },
                     { title: "Design Team", value: "designTeam" },
                     { title: "Reporting Team", value: "reportingTeam" },
                     { title: "Editing Team", value: "editingTeam" },
