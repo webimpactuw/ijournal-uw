@@ -4,6 +4,8 @@ import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 import localFont from "next/font/local";
+import AddComment from "@/Components/AddComment";
+import CommentSection from "@/Components/CommentSection";
 
 const batmipBook = localFont({
   src: "../../../assets/Fonts/BATMIP1.41-Book.otf",
@@ -175,7 +177,7 @@ export default async function Page({ params }) {
         </section>
 
         <section className="bg-white">
-            <div className={`${EBGaramondVariable.className} text-[10px] mx-auto w-[min(92vw,650px)] py-24`}>
+            <div className={`${EBGaramondVariable.className} text-[10px] mx-auto w-[min(92vw,650px)] py-4`}>
                 <article>
                     <PortableText value={article.content} components={components} />
                 </article>
@@ -184,6 +186,9 @@ export default async function Page({ params }) {
                 </h2>
             </div>
         </section>
+
+        <AddComment articleInfo={article}/>
+        <CommentSection articleInfo={article}/>
     </main>
   );
 }
