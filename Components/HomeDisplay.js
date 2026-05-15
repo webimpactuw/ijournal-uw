@@ -10,9 +10,9 @@ export default function HomeDisplay({ children }) {
     const [time, setTime] = useState(5);
     const timer = useRef(null);
 
-
     //Counts down and then switches to the main content of the homepage
     useEffect(() => {
+        
         if (time > 0) {
             timer.current = setInterval(() => {
                 setTime(prev => prev - 1);
