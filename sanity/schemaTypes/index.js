@@ -1,5 +1,4 @@
-export const schema = {
-  types: [],
-}
+import article from './article'
+import { teamMember } from './teamMember'
 
-export const schemaTypes = [article];
+export const schemaTypes = [article, teamMember]

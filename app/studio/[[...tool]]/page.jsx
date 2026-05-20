@@ -6,6 +6,10 @@
  * You can learn more about the next-sanity package here:
  * https://github.com/sanity-io/next-sanity
  */
+import React from 'react'
+// if (!React.useEffectEvent) {
+//   React.useEffectEvent = (fn) => fn
+// }
 
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../sanity.config'

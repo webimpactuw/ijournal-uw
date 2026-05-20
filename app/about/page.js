@@ -1,4 +1,4 @@
- import localFont from "next/font/local";
+import localFont from "next/font/local";
 import NextImage from "next/image";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -62,9 +62,9 @@ export default async function About() {
 
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
           <div className="flex flex-col items-center gap-3 shrink-0 md:order-2 md:ml-8 w-full md:w-auto mx-auto">
-            <NextImage src="/executive_board.jpg" alt="2024-2025 iJournal Executive Board" loading="eager" priority width={460} height={460} className="rounded object-cover w-full md:w-[460px] mx-auto h-auto" />
+            <NextImage src="/executive_board.jpg" alt="2025-2026 iJournal Executive Board" loading="eager" priority width={460} height={460} className="rounded object-cover w-full md:w-[460px] mx-auto h-auto" />
             <p className={`${dmMonoBasic.className} text-[16px] text-black text-center`}>
-              2024-2025 iJournal Executive Board
+              2025-2026 iJournal Executive Board
             </p>
           </div>
           <div className={`${ebGaramondBasic.className} flex-1 md:order-1 md:max-w-[710px] md:mt-22 space-y-4 text-black text-[21px] md:text-[22px] leading-snug`}>
@@ -83,7 +83,7 @@ export default async function About() {
           </div>
         </div>
         <h2 className={`${batmipItalic.className} text-[45px] leading-none tracking-[-0.02em] text-[#660c64] mt-16 md:mt-2`}>
-          2024-2025 Staff
+          2025-2026 Staff
         </h2>
         <div className="mt-3 mb-14 md:mb-8 h-px w-full bg-[#d9ccd8]" />
 
