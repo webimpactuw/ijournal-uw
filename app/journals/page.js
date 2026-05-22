@@ -42,7 +42,7 @@ export default function Journals() {
                     alt={journal.title}
                     width={400}
                     height={533}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover"
                   />
                 )}
               </div>
