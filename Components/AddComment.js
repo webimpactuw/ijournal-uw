@@ -68,6 +68,7 @@ export default function AddComment({articleInfo}) {
             setCommentText("");
             setNumber("");
             setAnimal("Finch");
+            setCount(300);
             router.refresh();
         } catch (err) {
             console.log(err);
@@ -84,7 +85,7 @@ export default function AddComment({articleInfo}) {
             {(charCount >= 0) && (
                 <p className="mt-3">{charCount} characters left</p>
             )}
-            
+
                 {/*Comment textbox*/}
                 <form onSubmit={handleSubmit} className="pb-10">
                     <div className="pb-8">
