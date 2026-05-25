@@ -30,8 +30,6 @@ export default function Reactions({commentId, initialReactions}) {
     ];
     
     async function handleClick(reaction, index) {
-        console.log(reaction + " " + initialReactions);
-
         await fetch("/api/reactions", {
             method: "POST",
             headers: {
