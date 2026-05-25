@@ -35,10 +35,7 @@ export default function AddComment({articleInfo}) {
             const userNum = parseInt(number, 10);
 
             //error handling
-            if (commentText.length > 300) {
-                setError("Comments can be no bigger than 300 characters");
-                throw new Error("Comments can be no bigger than 300 characters");
-            } else if (Number.isNaN(userNum)) {
+           if (Number.isNaN(userNum)) {
                 setError("Please enter a number between 1 and 99!");
                 throw new Error("Please enter a number between 1 and 99!");
             } else if (userNum <= 0 || userNum > 99) {
@@ -87,14 +84,11 @@ export default function AddComment({articleInfo}) {
             {(charCount >= 0) && (
                 <p className="mt-3">{charCount} characters left</p>
             )}
-
-            {(charCount < 0) && (
-                <p className="mt-3 text-red-500">Comment size is too big!</p>
-            )}
+            
                 {/*Comment textbox*/}
                 <form onSubmit={handleSubmit} className="pb-10">
                     <div className="pb-8">
-                        <textarea className="bg-gray-200 w-full text-[20px] h-35 p-2 text-black max-h-96 min-h-40" id="commentText"
+                        <textarea maxLength="300" className="bg-gray-200 w-full text-[20px] h-35 p-2 text-black max-h-96 min-h-40" id="commentText"
                                 onChange={(e) => commentBoxUpdate(e.target.value)}
                                 value={commentText} />
                         <input type="submit" value="Post" id="submit" className="bg-[#7a1b74] rounded px-3 text-white" />
