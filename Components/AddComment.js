@@ -32,8 +32,14 @@ export default function AddComment({articleInfo}) {
         setError("");
         const article = articleInfo.title;
         try {
+            
+            const num = Number(number);
+            if (!Number.isInteger(num)) {
+                setError("Please enter a number between 1 and 99!");
+                throw new Error("Please enter a number between 1 and 99!");
+            }
+            
             const userNum = parseInt(number, 10);
-
             //error handling
            if (Number.isNaN(userNum)) {
                 setError("Please enter a number between 1 and 99!");
@@ -115,7 +121,7 @@ export default function AddComment({articleInfo}) {
                     {/*Number 1-99 input*/}
                     <h2 className="text-red-600 px-1 inline-block">*</h2><h2 className="inline-block">Now, enter a number between 1-99...</h2>
                     <div>
-                        <input type="text" id="number" className="bg-gray-200 mx-2 w-10 h-8 rounded p-2 text-[#7a1b74]"
+                        <input type="text" id="number" maxLength="2" className="bg-gray-200 mx-2 w-10 h-8 rounded p-2 text-[#7a1b74]"
                         onChange={(e) => setNumber(e.target.value)}
                         value={number}/> 
                     </div>
