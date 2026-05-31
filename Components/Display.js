@@ -6,12 +6,9 @@ import { motion } from "motion/react";
 import Footer from "./Footer";
 
 export default function Intro({ children }) {
-    const [mounted, setMounted] = useState(false);
     const [showLoader, setShowLoader] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
-
         const alreadyPlayed = sessionStorage.getItem("intro-played");
 
         if (!alreadyPlayed) {
@@ -26,13 +23,9 @@ export default function Intro({ children }) {
         }
     }, []);
 
-    if (!mounted) {
-        return null;
-    }
-
     return(
         <>
-            {showLoader ? (
+            {(showLoader) ? (
                 <div className="flex justify-center items-center h-screen pointer-events-none bg-[rgb(254,252,253)]">
                     <video src="/logos/Loading_Animation.mp4" 
                         //autoplay, muted and loop allow the file to run until timer runs out loop
