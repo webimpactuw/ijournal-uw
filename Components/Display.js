@@ -1,36 +1,38 @@
 "use client"
 
+import { useEffect, useState } from "react";
+import NavBar from "./Navbar"
 import { motion } from "motion/react";
-import { useState, useEffect, useRef } from "react";
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
+import Footer from "./Footer";
 
-export default function HomeDisplay({ children }) {
-    const [loading, setLoading] = useState(true);
-    const [time, setTime] = useState(5);
-    const timer = useRef(null);
+export default function Intro({ children }) {
+    const [mounted, setMounted] = useState(false);
+    const [showLoader, setShowLoader] = useState(false);
 
-    //Counts down and then switches to the main content of the homepage
     useEffect(() => {
-        
-        if (time > 0) {
-            timer.current = setInterval(() => {
-                setTime(prev => prev - 1);
-            }, 1000);
-        }
-        
-        if (time == 0) {
-            setLoading(false);
-            clearInterval(timer.current);
-        }
+        setMounted(true);
 
-        return () => clearInterval(timer.current);
-    }, [time]);
+        const alreadyPlayed = sessionStorage.getItem("intro-played");
 
+        if (!alreadyPlayed) {
+            setShowLoader(true);
+
+            const timer = setTimeout(() => {
+                setShowLoader(false);
+                sessionStorage.setItem("intro-played", "true");
+            }, 5000);
+
+            return () => clearTimeout(timer);
+        }
+    }, []);
+
+    if (!mounted) {
+        return null;
+    }
 
     return(
         <>
-            {(loading) && (
+            {showLoader ? (
                 <div className="flex justify-center items-center h-screen pointer-events-none bg-[rgb(254,252,253)]">
                     <video src="/logos/Loading_Animation.mp4" 
                         //autoplay, muted and loop allow the file to run until timer runs out loop
@@ -46,14 +48,13 @@ export default function HomeDisplay({ children }) {
                         height="430"
                     />
                 </div>
-            )}
-            {(!loading) && (
+            ) : (
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.2 }}
                 >
-                    <Navbar />
+                    <NavBar />
                         {children}
                     <Footer />
                 </motion.div>
@@ -61,4 +62,3 @@ export default function HomeDisplay({ children }) {
         </>
     )
 }
-

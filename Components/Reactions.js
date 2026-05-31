@@ -50,7 +50,7 @@ export default function Reactions({commentId, initialReactions}) {
             {reactions.map((reaction) => (
                 <button 
                     key={reaction.react} 
-                    className={`border rounded-2xl w-8 mr-2 hover:bg-navBar hover:cursor-pointer ${reactionStates[reaction.index] ? "bg-navBar" : ""}`} 
+                    className={`border rounded-2xl w-8 mr-2 hover:bg-navBar duration-200 hover:cursor-pointer ${reactionStates[reaction.index] ? "bg-navBar" : ""}`} 
                     onClick={() => handleClick(reaction.react, reaction.index)}
                 >
                     {reaction.emoji}

@@ -98,7 +98,7 @@ export default function AddComment({articleInfo}) {
                         <textarea maxLength="300" className="bg-gray-200 w-full text-[20px] h-35 p-2 text-black max-h-96 min-h-40" id="commentText"
                                 onChange={(e) => commentBoxUpdate(e.target.value)}
                                 value={commentText} />
-                        <input type="submit" value="Post" id="submit" className="bg-[#7a1b74] rounded px-3 text-white" />
+                        <input type="submit" value="Post" id="submit" className="bg-[#7a1b74] rounded px-3 text-white hover:bg-[#d512c8] duration-200 hover:cursor-pointer" />
                     </div>
                     
                     {/*Animal selection*/}
@@ -106,11 +106,12 @@ export default function AddComment({articleInfo}) {
                     <h2 className="text-red-600 px-1 inline-block">*</h2><h2 className="inline-block">First pick an animal</h2>
                     <div>
                         {animalOptions.map((animal) => (
-                            <button 
+                            <button
                                 key={animal.id} 
                                 type="button"
                                 onClick={() => setAnimal(animal.value)}
-                                className={`px-4 rounded m-2 ${ selectedAnimal == animal.value ? "bg-[#7a1b74] text-white" : "bg-gray-200 text-black"}`}>
+                                className={`px-4 rounded m-2 hover:bg-[#7a1b74] hover:text-white duration-200 hover:cursor-pointer ${ selectedAnimal == animal.value ? "bg-[#7a1b74] text-white" : "bg-gray-200 text-black"}`}
+                            >
                                 {animal.value}
                             </button>
                         ))}
