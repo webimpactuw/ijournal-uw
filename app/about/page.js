@@ -28,12 +28,12 @@ const dmMonoMedium = localFont({
   src: "../../assets/Fonts/DMMono-Medium.ttf",
 });
 
-async function getTeamMembers() {
-  return client.fetch(`
-    *[_type == "teamMember"] | order(order asc) {
-      _id, name, role, team, photo
-    }
-  `)
+async function getAboutData() {
+  const [members, boardData] = await Promise.all([
+    client.fetch(`*[_type == "teamMember"] | order(order asc) { _id, name, role, team, photo }`),
+    client.fetch(`*[_type == "boardPhoto" && _id == "boardPhoto"][0]{ photo, caption }`)
+  ])
+  return { members, boardPhoto: boardData?.photo, caption: boardData?.caption }
 }
 
 const teams = [
@@ -45,9 +45,9 @@ const teams = [
 ]
 
 export default async function About() {
-  const members = await getTeamMembers()
+  const { members, boardPhoto, caption } = await getAboutData()
   return (
-    <section className="w-full bg-white py-16">
+    <section className="w-full bg-white py-16 logo-cursor">
       <div className="mx-auto w-[min(92vw,1300px)]">
         <h2 className={`${batmipItalic.className} text-[42px] md:text-[45px] leading-none tracking-[-0.02em] text-[#660c64]`}>
           About Us
@@ -62,10 +62,24 @@ export default async function About() {
 
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
           <div className="flex flex-col items-center gap-3 shrink-0 md:order-2 md:ml-8 w-full md:w-auto mx-auto">
-            <NextImage src="/executive_board.jpg" alt="2025-2026 iJournal Executive Board" loading="eager" priority width={460} height={460} className="rounded object-cover w-full md:w-[460px] mx-auto h-auto" />
-            <p className={`${dmMonoBasic.className} text-[16px] text-black text-center`}>
-              2025-2026 iJournal Executive Board
-            </p>
+            {boardPhoto?.asset ? (
+              <>
+                <NextImage
+                  src={urlFor(boardPhoto).auto('format').url()}
+                  alt={boardPhoto.alt ?? "iJournal Executive Board"}
+                  loading="eager"
+                  priority
+                  width={460}
+                  height={460}
+                  className="rounded object-cover w-full md:w-[460px] mx-auto h-auto"
+                />
+                {caption && (
+                  <p className={`${dmMonoBasic.className} text-[16px] text-black text-center`}>
+                    {caption}
+                  </p>
+                )}
+              </>
+            ) : null}
           </div>
           <div className={`${ebGaramondBasic.className} flex-1 md:order-1 md:max-w-[710px] md:mt-22 space-y-4 text-black text-[21px] md:text-[22px] leading-snug`}>
             <p>

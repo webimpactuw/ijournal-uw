@@ -30,7 +30,7 @@ export default function Journals() {
   }
 
   return (
-    <div className="bg-white text-navBar font-garamond text-4xl py-16">
+    <div className="bg-white text-navBar font-garamond text-4xl py-16 logo-cursor">
       <div className="mx-auto w-[min(80vw,1300px)]">
         <h1>
           Every school year, the iJournal team works to curate a collection of

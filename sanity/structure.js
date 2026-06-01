@@ -2,4 +2,15 @@
 export const structure = (S) =>
   S.list()
     .title('Content')
-    .items(S.documentTypeListItems())
+    .items([
+      S.listItem()
+        .title('Board Photo')
+        .child(
+          S.document()
+            .schemaType('boardPhoto')
+            .documentId('boardPhoto')
+        ),
+      ...S.documentTypeListItems().filter(
+        (item) => item.getId() !== 'boardPhoto'
+      ),
+    ])
