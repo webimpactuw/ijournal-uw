@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
 import { urlFor } from '@/sanity/lib/image';
 import { client } from '@/sanity/lib/client';
-import JournalFlipBook from './JournalFlipbook';
+
+const JournalFlipBook = dynamic(() => import('./JournalFlipbook'), { ssr: false });
 
 export default function Journals() {
   const [journals, setJournals] = useState([]);
@@ -13,7 +15,7 @@ export default function Journals() {
 
   useEffect(() => {
     client
-      .fetch(`*[_type == "journal"] | order(edition asc) {
+      .fetch(`*[_type == "journal"] | order(edition desc) {
         _id,
         title,
         coverImage,
