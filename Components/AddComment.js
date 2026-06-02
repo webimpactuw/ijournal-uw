@@ -86,14 +86,14 @@ export default function AddComment({articleInfo}) {
         <>
             {/* Comment section */}
             <section className="mx-auto w-[min(92vw,650px)] py-14">
-            <h1 className="text-[#7a1b74] text-3xl"><i>New Comment</i></h1>
+                <h1 className="text-[#7a1b74] text-3xl font-batmip"><i>New Comment</i></h1>
 
-            {(charCount >= 0) && (
-                <p className="mt-3">{charCount} characters left</p>
-            )}
+                {(charCount >= 0) && (
+                    <p className="mt-3 font-serif">{charCount} characters left</p>
+                )}
 
                 {/*Comment textbox*/}
-                <form onSubmit={handleSubmit} className="pb-10">
+                <form onSubmit={handleSubmit} className="pb-10 font-serif">
                     <div className="pb-8">
                         <textarea maxLength="300" className="bg-gray-200 w-full text-[20px] h-35 p-2 text-black max-h-96 min-h-40" id="commentText"
                                 onChange={(e) => commentBoxUpdate(e.target.value)}
