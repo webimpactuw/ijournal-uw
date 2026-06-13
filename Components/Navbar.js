@@ -14,6 +14,24 @@ export default function Navbar() {
     setOpen(false);
   }, [pathname]);
 
+  //Makes sure the navbar closes when the screen gets too big
+  useEffect(() => {
+    const screenWatcher = window.matchMedia("(min-width: 768px)");
+
+    const handleResize = (e) => {
+      if (e.matches) {
+        setOpen(false);
+      }
+    };
+
+    screenWatcher.addEventListener("change", handleResize);
+
+    return () => {
+      screenWatcher.removeEventListener("change", handleResize);
+    };
+  })
+
+
   if(!pathname.startsWith("/studio")) {  
     return (
       <nav className="w-full sticky top-0 bg-navBar z-10">
@@ -27,7 +45,7 @@ export default function Navbar() {
               alt="IJournal Open logo"
               whileHover={{rotate: 10, scale: 1.3}}
             />
-            </Link>
+          </Link>
 
           {/* Nav links */}
           <div className="hidden md:flex gap-12 text-lg font-medium text-white pr-10 font-mono">
@@ -83,9 +101,9 @@ export default function Navbar() {
           {open && (
             <motion.div 
               className="md:hidden absolute w-full bg-navBar text-5xl text-white font-batmip px-4 shadow-2xl overflow-y-auto max-h-[80vh]"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
+              initial={{ height: 0 }}
+              animate={{ height: "54vh" }}
+              exit={{ height: 0 }}
               transition={{ duration: 0.2 }}
             >
               <i>
