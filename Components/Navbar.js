@@ -14,23 +14,6 @@ export default function Navbar() {
     setOpen(false);
   }, [pathname]);
 
-  //Makes sure the navbar closes when the screen gets too big
-  useEffect(() => {
-    const screenWatcher = window.matchMedia("(min-width: 768px)");
-
-    const handleResize = (e) => {
-      if (e.matches) {
-        setOpen(false);
-      }
-    };
-
-    screenWatcher.addEventListener("change", handleResize);
-
-    return () => {
-      screenWatcher.removeEventListener("change", handleResize);
-    };
-  })
-
   if(!pathname.startsWith("/studio")) {  
     return (
       <nav className="w-full sticky top-0 bg-navBar z-10">
@@ -99,7 +82,7 @@ export default function Navbar() {
         <AnimatePresence>
           {open && (
             <motion.div 
-              className="md:hidden overflow-hidden absolute w-full bg-navBar text-5xl text-white font-batmip px-4 shadow-2xl overflow-y-auto max-h-[80vh]"
+              className="md:hidden absolute w-full bg-navBar text-5xl text-white font-batmip px-4 shadow-2xl overflow-y-auto max-h-[80vh]"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}

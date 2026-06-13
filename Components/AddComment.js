@@ -89,7 +89,7 @@ export default function AddComment({articleInfo}) {
                 <h1 className="text-[#7a1b74] text-3xl font-batmip"><i>New Comment</i></h1>
 
                 {(charCount >= 0) && (
-                    <p className="mt-3 font-serif">{charCount} characters left</p>
+                    <p className="mt-3 font-serif text-black">{charCount} characters left</p>
                 )}
 
                 {/*Comment textbox*/}
@@ -103,7 +103,7 @@ export default function AddComment({articleInfo}) {
                     
                     {/*Animal selection*/}
                     <h2 className="text-[#7a1b74] text-xl">Before posting, let's create your anonymous nickname...</h2>
-                    <h2 className="text-red-600 px-1 inline-block">*</h2><h2 className="inline-block">First pick an animal</h2>
+                    <h2 className="text-red-600 px-1 inline-block">*</h2><h2 className="inline-block text-black">First pick an animal</h2>
                     <div>
                         {animalOptions.map((animal) => (
                             <button
@@ -120,7 +120,7 @@ export default function AddComment({articleInfo}) {
                     <br/>
 
                     {/*Number 1-99 input*/}
-                    <h2 className="text-red-600 px-1 inline-block">*</h2><h2 className="inline-block">Now, enter a number between 1-99...</h2>
+                    <h2 className="text-red-600 px-1 inline-block">*</h2><h2 className="inline-block text-black">Now, enter a number between 1-99...</h2>
                     <div>
                         <input type="text" id="number" maxLength="2" className="bg-gray-200 mx-2 w-10 h-8 rounded p-2 text-[#7a1b74]"
                         onChange={(e) => setNumber(e.target.value)}
