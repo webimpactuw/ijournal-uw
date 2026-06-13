@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export default function Footer() {
     return(
-        <footer className="bg-footer w-full py-8 md:py-13 px-16 relative z-0">
+        <footer className="bg-footer w-full py-8 md:py-13 px-16">
             <div className="-mt-6">
                 <div className="flex flex-col items-center mb-6">
                     <img src="../logos/iJournal_Cursor.svg" alt="footer image"/>
@@ -24,7 +24,7 @@ export default function Footer() {
                 </motion.p>
 
                 {/* Desktop */}
-                <motion.p style={{ fontFamily: 'Batmip-Book', fontStyle: 'normal', fontSize: 'clamp(1.6rem, 2.4vw, 2.4rem)', lineHeight: '1.2', marginLeft: 'clamp(2rem, 8vw, 8rem)' }} className="hidden md:block font-medium text-footerText text-left max-w-7xl">
+                <motion.p style={{ fontFamily: 'Batmip-Book', fontStyle: 'normal', fontSize: 'clamp(1.6rem, 2.4vw, 2.4rem)', lineHeight: '1.2' }} className="hidden md:block font-medium text-footerText text-center max-w-7xl mx-auto">
                     <Link href="/" className="italic underline transition-colors hover:text-pink-400">iJournal</Link>{" "}
                     is the UW iSchool's{" "}
                     <Link href="/about" className="italic underline transition-colors hover:text-pink-400">student-led</Link>{" "}

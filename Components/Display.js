@@ -28,15 +28,13 @@ export default function Intro({ children }) {
             {(showLoader) ? (
                 <div className="flex justify-center items-center h-screen pointer-events-none bg-[rgb(254,252,253)]">
                     <video src="/logos/Loading_Animation.mp4" 
-                        //autoplay, muted and loop allow the file to run until timer runs out loop
                         autoPlay
                         muted
                         loop
-
-                        playsInline //no phone behavior
-                        controls={false} //makes no controls show like pause or volume
-                        disablePictureInPicture //disables picture in picture
-                        disableRemotePlayback //stops airplay options
+                        playsInline
+                        controls={false}
+                        disablePictureInPicture
+                        disableRemotePlayback
                         width="430" 
                         height="430"
                     />
@@ -46,9 +44,12 @@ export default function Intro({ children }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.2 }}
+                    className="flex flex-col min-h-screen"
                 >
                     <NavBar />
+                    <main className="flex-1">
                         {children}
+                    </main>
                     <Footer />
                 </motion.div>
             )}

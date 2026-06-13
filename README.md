@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Project Description 
+
+Official code repository of the iJournal website, built using Next.js, Sanity CMS, and MongoDB.
+
 ## Getting Started
 
 First, install dependencies:
@@ -47,15 +51,51 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 [website]/
 ├── app/
 │   ├── about/
-│   │   └── page.js           # About page contents
-│   ├── articles/             # Articles page contents
-│   │   └── page.js
-│   ├── journals/             # Journals page contents
-│   │   └── page.js
-│   ├── Components/           
-│   │   └── NavBar.js         # Global navbar component
-│   ├── global.css            # Global CSS file
-│   ├── layout.js             # Global Page layout stylings
-│   └── page.js               # Website homepage
-└── public/                   # Public, user-facing files (PNGs, SVGs)
+│   │   └── page.js                   # About page
+│   ├── api/
+│   │   ├── comments/
+│   │   │   └── route.js              # Comments API route
+│   │   └── reactions/
+│   │       └── route.js              # Reactions API route
+│   ├── articles/
+│   │   ├── [slug]/
+│   │   │   └── page.js               # Individual article page
+│   │   └── page.js                   # Articles page
+│   ├── journals/
+│   │   ├── JournalFlipbook.js        # PDF flipbook viewer component
+│   │   └── page.js                   # Journals page
+│   ├── studio/[[...tool]]/
+│   │   └── page.jsx                  # Sanity Studio embedded route
+│   ├── globals.css                   # Global styles
+│   ├── layout.js                     # Root layout
+│   └── page.js                       # Homepage
+├── Components/
+│   ├── AddComment.js                 # Comment submission form
+│   ├── CommentSection.js             # Comment section container
+│   ├── Display.js                    # Content display component
+│   ├── FeaturedArticles.js           # Featured articles section
+│   ├── Footer.js                     # Global footer
+│   ├── Homepage.js                   # Homepage content
+│   ├── IndividualComment.js          # Comment display
+│   ├── Navbar.js                     # Global navbar
+│   └── Reactions.js                  # Article reactions
+├── lib/
+│   └── mongodb.js                    # MongoDB connection
+├── models/
+│   └── Comment.js                    # Comment data model
+├── public/                           # Static assets (fonts, logos, images)
+├── sanity/
+│   ├── lib/
+│   │   ├── client.js                 # Sanity client config
+│   │   ├── image.js                  # Sanity image helper
+│   │   └── live.js                   # Sanity live preview
+│   └── schemaTypes/
+│       ├── article.js                # Article schema
+│       ├── boardPhoto.js             # Board photo schema
+│       ├── index.js                  # Schema index
+│       ├── journal.js                # Journal schema
+│       └── teamMember.js             # Team member schema
+├── next.config.mjs                   # Next.js config
+├── sanity.cli.js                     # Sanity CLI config
+└── sanity.config.js                  # Sanity studio config
 ```
