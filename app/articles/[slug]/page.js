@@ -185,10 +185,12 @@ export default async function Page({ params }) {
                     <PortableText value={article.credits} components={creditComponents} />
                 </h2>
             </div>
+            
+            <AddComment articleInfo={article}/>
+            <CommentSection articleInfo={article}/>
         </section>
 
-        <AddComment articleInfo={article}/>
-        <CommentSection articleInfo={article}/>
+        
     </main>
   );
 }

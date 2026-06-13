@@ -7,7 +7,6 @@ export default async function CommentSection({articleInfo}) {
     const articleTitle = articleInfo.title;
     const comments = await Comment.find({article: articleTitle}).sort({createdAt: -1});
 
-    //TODO sort comments with newest at the top
     return (
         <div className="mx-auto w-[min(92vw,650px)] pb-30">
             <h1 className="text-[#7a1b74] text-3xl font-batmip"><i>Comments</i></h1>

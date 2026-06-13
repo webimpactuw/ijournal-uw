@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
@@ -96,48 +96,55 @@ export default function Navbar() {
         </motion.div>
 
         {/*Dropdown menu for the hamburger icon*/}
-        <div 
-          className={`md:hidden overflow-hidden absolute w-full bg-navBar text-5xl text-white font-batmip px-4 shadow-2xl duration-400 font-
-            ${open ? "max-h-96" : "max-h-0"}`}
-        >
-          <i>
-          <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
-            <Link 
-              className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
-              href="/"  
+        <AnimatePresence>
+          {open && (
+            <motion.div 
+              className="md:hidden overflow-hidden absolute w-full bg-navBar text-5xl text-white font-batmip px-4 shadow-2xl overflow-y-auto max-h-[80vh]"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.2 }}
             >
-              Home
-            </Link>
-          </div>
-            
-          <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
-            <Link 
-              className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
-              href="/articles"  
-            >
-              Articles
-            </Link>
-          </div>
-          
-          <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
-            <Link 
-              className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
-              href="/journals"  
-            >
-              Journals
-            </Link>
-          </div>
+              <i>
+              <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
+                <Link 
+                  className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
+                  href="/"  
+                >
+                  Home
+                </Link>
+              </div>
+                
+              <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
+                <Link 
+                  className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
+                  href="/articles"  
+                >
+                  Articles
+                </Link>
+              </div>
+              
+              <div className="max-w-7xl mx-auto py-6 border-b-2 border-dropDownBorder">
+                <Link 
+                  className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
+                  href="/journals"  
+                >
+                  Journals
+                </Link>
+              </div>
 
-          <div className="max-w-7xl mx-auto py-6">
-            <Link 
-              className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
-              href="/about"  
-            >
-              About
-            </Link>
-          </div>
-          </i>
-        </div>
+              <div className="max-w-7xl mx-auto py-6">
+                <Link 
+                  className="px-3 w-1 cursor-pointer duration-500 hover:text-pink-400" 
+                  href="/about"  
+                >
+                  About
+                </Link>
+              </div>
+              </i>
+            </motion.div>
+          )}
+        </AnimatePresence>
         
       </nav>
     );
