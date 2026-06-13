@@ -20,7 +20,7 @@ export default async function CommentSection({articleInfo}) {
             )}
 
             {(comments.length == 0) && (
-                <h2 className="mt-1 font-serif">Nothing to see here yet. Be the first to comment!</h2>
+                <h2 className="mt-1 font-serif text-black">Nothing to see here yet. Be the first to comment!</h2>
             )}
             
         </div>
